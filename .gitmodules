@@ -1,0 +1,7 @@
+[submodule "pngwriter"]
+	path = pngwriter
+	url = https://github.com/pngwriter/pngwriter.git
+	branch = dev
+[submodule "xeus-cling-cuda-container"]
+	path = xeus-cling-cuda-container
+	url = git@github.com:ComputationalRadiationPhysics/xeus-cling-cuda-container.git
