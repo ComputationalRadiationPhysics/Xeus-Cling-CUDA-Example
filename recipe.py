@@ -4,7 +4,7 @@ import argparse, sys
 # https://github.com/ComputationalRadiationPhysics/xeus-cling-cuda-container
 import xeusClingCudaContainer.hpccm.rel_container as relc
 
-from hpccm.primitives import copy, shell, runscript, environment
+from hpccm.primitives import copy, shell, runscript, environment, label
 from hpccm.templates.CMakeBuild import CMakeBuild
 from hpccm.building_blocks.packages import packages
 
@@ -37,6 +37,9 @@ def main():
         multiStageBuild(stages)
 
 def singleStageBuild(stage):
+    stage += label(metadata={'MAINTAINER': 'Simeon Ehrig'})
+    stage += label(metadata={'EMAIL': 's.ehrig@hzdr.de'})
+    stage += label(metadata={'Version': str(container_version)})
     stage += environment(variables={'GOL_VERSION' : str(container_version)})
 
     # copy example inside container

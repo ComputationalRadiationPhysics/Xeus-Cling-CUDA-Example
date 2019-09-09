@@ -118,6 +118,20 @@ From: nvidia/cuda:8.0-devel-ubuntu16.04
 
 
 
+%labels
+    MAINTAINER Simeon Ehrig
+
+%labels
+    EMAIL s.ehrig@hzdr.de
+
+%labels
+    Version 1.0
+
+%environment
+    export GOL_VERSION=1.0
+%post
+    export GOL_VERSION=1.0
+
 %files
     notebook /
 
