@@ -4,9 +4,11 @@ import argparse, sys
 # https://github.com/ComputationalRadiationPhysics/xeus-cling-cuda-container
 import xeusClingCudaContainer.hpccm.rel_container as relc
 
-from hpccm.primitives import copy, shell, runscript
+from hpccm.primitives import copy, shell, runscript, environment
 from hpccm.templates.CMakeBuild import CMakeBuild
 from hpccm.building_blocks.packages import packages
+
+container_version = 1.0
 
 def main():
     parser = argparse.ArgumentParser(
@@ -14,7 +16,12 @@ def main():
     parser.add_argument('--build_dir', type=str, default='/tmp/GOL_example',
                         help='Define the path in which all projects will be built (default: /tmp/GOL_example).')
     parser.add_argument('-j', type=str, help='number of build threads for make (default: -j)')
+    parser.add_argument('-v ', '--version', action='store_true', help='print version of the container')
     args = parser.parse_args()
+
+    if args.version:
+        print(container_version)
+        sys.exit(0)
 
     if args.j:
         threads = int(args.j)
@@ -30,6 +37,8 @@ def main():
         multiStageBuild(stages)
 
 def singleStageBuild(stage):
+    stage += environment(variables={'GOL_VERSION' : str(container_version)})
+
     # copy example inside container
     stage += copy(src='notebook', dest='/')
 
