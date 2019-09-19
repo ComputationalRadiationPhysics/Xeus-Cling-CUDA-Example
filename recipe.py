@@ -1,22 +1,28 @@
-import argparse, sys
+import argparse
+import sys
 
 # release container from xeus-cling-cuda-container project
 # https://github.com/ComputationalRadiationPhysics/xeus-cling-cuda-container
-import xeusClingCudaContainer.hpccm.rel_container as relc
+import xeusClingCudaContainer.generator as gn
 
 from hpccm.primitives import copy, shell, runscript, environment, label
 from hpccm.templates.CMakeBuild import CMakeBuild
 from hpccm.building_blocks.packages import packages
 
-container_version = 1.0
+container_version = 1.1
+
 
 def main():
     parser = argparse.ArgumentParser(
         description='Simple script for generating a singularity recipe for the GOL example.')
-    parser.add_argument('--build_dir', type=str, default='/tmp/GOL_example',
+    parser.add_argument('--build_prefix', type=str, default='/tmp/GOL_example',
                         help='Define the path in which all projects will be built (default: /tmp/GOL_example).')
-    parser.add_argument('-j', type=str, help='number of build threads for make (default: -j)')
-    parser.add_argument('-v ', '--version', action='store_true', help='print version of the container')
+    parser.add_argument(
+        '-j', type=str, help='number of build threads for make (default: -j)')
+    parser.add_argument(
+        '-l', type=str, help='number of linker threads for the cling build (default: -j)')
+    parser.add_argument('-v ', '--version', action='store_true',
+                        help='print version of the container')
     args = parser.parse_args()
 
     if args.version:
@@ -28,22 +34,27 @@ def main():
         if threads < 1:
             raise ValueError('-j have to be greater than 0')
     else:
-        threads=None
+        threads = None
 
-    stages = relc.gen_stage('singularity', args.build_dir, 'RELEASE', True, threads)
-    if type(stages) is not list:
-        singleStageBuild(stages)
+    if args.l:
+        linker_threads = int(args.l)
+        if linker_threads < 1:
+            raise ValueError('-l have to be greater than 0')
     else:
-        multiStageBuild(stages)
+        linker_threads = None
 
-def singleStageBuild(stage):
-    stage += label(metadata={'MAINTAINER': 'Simeon Ehrig'})
-    stage += label(metadata={'EMAIL': 's.ehrig@hzdr.de'})
-    stage += label(metadata={'Version': str(container_version)})
-    stage += environment(variables={'GOL_VERSION' : str(container_version)})
+    xcc_gen = gn.XCC_gen(build_prefix=args.build_prefix,
+                         threads=threads,
+                         linker_threads=linker_threads)
+    stage = xcc_gen.gen_release_single_stage()
+
+    stage += label(metadata={'GOL_MAINTAINER': 'Simeon Ehrig'})
+    stage += label(metadata={'GOL_EMAIL': 's.ehrig@hzdr.de'})
+    stage += label(metadata={'GOL_Version': str(container_version)})
 
     # copy example inside container
     stage += copy(src='notebook', dest='/')
+    stage += copy(src='jupyter_notebook_config.py', dest='/')
 
     # copy and build the pnwriter library
     stage += copy(src='pngwriter', dest='/opt')
@@ -59,21 +70,10 @@ def singleStageBuild(stage):
                                  ' mkdir /tmp/GOL-xeus-cling-cuda &&'
                                  ' cp -r /notebook/ /tmp/GOL-xeus-cling-cuda\n fi',
                                  'cd /tmp/GOL-xeus-cling-cuda/notebook',
-                                 'jupyter-lab'])
+                                 'jupyter-notebook --config=/jupyter_notebook_config.py'])
 
     print(stage.__str__())
 
-def multiStageBuild(stages):
-    print('multi-stage-builds are not supported at the moment', file=sys.stderr)
-
-    sys.exit(1)
-
-    # TODO: for a later implementation
-    recipe = []
-    for stage in stages:
-            recipe.append('')
-            recipe.append(stage.__str__())
-    print('\n'.join(recipe))
 
 if __name__ == '__main__':
     main()
