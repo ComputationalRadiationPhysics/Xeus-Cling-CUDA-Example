@@ -1,13 +1,15 @@
 import argparse
-import sys
+import sys,os
 
 # release container from xeus-cling-cuda-container project
 # https://github.com/ComputationalRadiationPhysics/xeus-cling-cuda-container
-import xeusClingCudaContainer.generator as gn
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'xeusClingCudaContainer'))
+import generator as gn
 
 from hpccm.primitives import copy, shell, runscript, environment, label
 from hpccm.templates.CMakeBuild import CMakeBuild
 from hpccm.building_blocks.packages import packages
+from hpccm.templates.git import git
 
 container_version = 1.1
 
@@ -57,12 +59,15 @@ def main():
     stage += copy(src='jupyter_notebook_config.py', dest='/')
 
     # copy and build the pnwriter library
-    stage += copy(src='pngwriter', dest='/opt')
+    png_git = git()
+    stage += png_git.clone_step(repository='https://github.com/pngwriter/pngwriter.git',
+                                branch='dev',
+                                path='/opt/')
     stage += packages(ospackages=['libpng-dev'])
-    cmake = CMakeBuild(prefix='/notebook/pngwriter')
-    stage += shell(commands=[cmake.configure_step(directory='/opt/pngwriter',
+    png_cmake = CMakeBuild(prefix='/notebook/pngwriter')
+    stage += shell(commands=[png_cmake.configure_step(directory='/opt/pngwriter',
                                                   opts=['-DBUILD_SHARED_LIBS=ON']),
-                             cmake.build_step(target='install'),
+                             png_cmake.build_step(target='install'),
                              'rm -rf /opt/pngwriter'])
 
     # Copy notebook examples and pngwriter lib to the host's /tmp file system to obtain a writable file system.
