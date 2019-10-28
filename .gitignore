@@ -1,3 +1,6 @@
 # kdevelop container
 *.sif
 *.def
+
+# temporary files of jupyter notebook
+.ipynb_checkpoints/
