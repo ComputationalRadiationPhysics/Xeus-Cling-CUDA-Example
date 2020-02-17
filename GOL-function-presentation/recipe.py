@@ -1,17 +1,13 @@
 import argparse
 import sys,os
 
-# release container from xeus-cling-cuda-container project
-# https://github.com/ComputationalRadiationPhysics/xeus-cling-cuda-container
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'xeusClingCudaContainer'))
-import generator as gn
-
+import hpccm
 from hpccm.primitives import copy, shell, runscript, environment, label
 from hpccm.templates.CMakeBuild import CMakeBuild
 from hpccm.building_blocks.packages import packages
 from hpccm.templates.git import git
 
-container_version = 1.1
+container_version = 1.2
 
 
 def main():
@@ -19,10 +15,6 @@ def main():
         description='Simple script for generating a singularity recipe for the GOL example.')
     parser.add_argument('--build_prefix', type=str, default='/tmp/GOL_example',
                         help='Define the path in which all projects will be built (default: /tmp/GOL_example).')
-    parser.add_argument(
-        '-j', type=str, help='number of build threads for make (default: -j)')
-    parser.add_argument(
-        '-l', type=str, help='number of linker threads for the cling build (default: -j)')
     parser.add_argument('-v ', '--version', action='store_true',
                         help='print version of the container')
     args = parser.parse_args()
@@ -31,24 +23,9 @@ def main():
         print(container_version)
         sys.exit(0)
 
-    if args.j:
-        threads = int(args.j)
-        if threads < 1:
-            raise ValueError('-j have to be greater than 0')
-    else:
-        threads = None
-
-    if args.l:
-        linker_threads = int(args.l)
-        if linker_threads < 1:
-            raise ValueError('-l have to be greater than 0')
-    else:
-        linker_threads = None
-
-    xcc_gen = gn.XCC_gen(build_prefix=args.build_prefix,
-                         threads=threads,
-                         linker_threads=linker_threads)
-    stage = xcc_gen.gen_release_single_stage()
+    hpccm.config.set_container_format('singularity')
+    hpccm.config.set_singularity_version('3.3')
+    stage = hpccm.Stage()
 
     stage += label(metadata={'GOL_MAINTAINER': 'Simeon Ehrig'})
     stage += label(metadata={'GOL_EMAIL': 's.ehrig@hzdr.de'})
@@ -59,16 +36,21 @@ def main():
     stage += copy(src='jupyter_notebook_config.py', dest='/')
 
     # copy and build the pnwriter library
-    png_git = git()
-    stage += png_git.clone_step(repository='https://github.com/pngwriter/pngwriter.git',
-                                branch='dev',
-                                path='/opt/')
     stage += packages(ospackages=['libpng-dev'])
+    png = []
+
+    png_git = git()
+    png.append(png_git.clone_step(repository='https://github.com/pngwriter/pngwriter.git',
+                                  branch='dev',
+                                  path='/opt/'))
+
     png_cmake = CMakeBuild(prefix='/notebook/pngwriter')
-    stage += shell(commands=[png_cmake.configure_step(directory='/opt/pngwriter',
-                                                  opts=['-DBUILD_SHARED_LIBS=ON']),
-                             png_cmake.build_step(target='install'),
-                             'rm -rf /opt/pngwriter'])
+    png.append(png_cmake.configure_step(directory='/opt/pngwriter',
+                                        opts=['-DBUILD_SHARED_LIBS=ON']))
+    png.append(png_cmake.build_step(target='install'))
+    png.append('rm -rf /opt/pngwriter')
+
+    stage += shell(commands=png)
 
     # Copy notebook examples and pngwriter lib to the host's /tmp file system to obtain a writable file system.
     stage += runscript(commands=['if [ ! -d /tmp/GOL-xeus-cling-cuda ]; then \n'
@@ -77,7 +59,11 @@ def main():
                                  'cd /tmp/GOL-xeus-cling-cuda/notebook',
                                  'jupyter-notebook --config=/jupyter_notebook_config.py'])
 
-    print(stage.__str__())
+    # Add the bootstrap manually because hpccm does not support .sregistry,
+    recipe = stage.__str__()
+    recipe = 'Bootstrap: library\nFrom: sehrig/default/xeus-cling-cuda:2.3\n\n' + recipe
+
+    print(recipe)
 
 
 if __name__ == '__main__':
