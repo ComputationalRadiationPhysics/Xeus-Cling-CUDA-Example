@@ -55,7 +55,9 @@ def main():
     # Copy notebook examples and pngwriter lib to the host's /tmp file system to obtain a writable file system.
     stage += runscript(commands=['if [ ! -d /tmp/GOL-xeus-cling-cuda ]; then \n'
                                  ' mkdir /tmp/GOL-xeus-cling-cuda &&'
-                                 ' cp -r /notebook/ /tmp/GOL-xeus-cling-cuda\n fi',
+                                 ' cp -r /notebook/ /tmp/GOL-xeus-cling-cuda &&'
+                                 ' ln -s /tmp/GOL-xeus-cling-cuda/notebook/pngwriter'
+                                 '  /tmp/GOL-xeus-cling-cuda/notebook/GTC_presentations/simulation/ \n fi',
                                  'cd /tmp/GOL-xeus-cling-cuda/notebook',
                                  'jupyter-notebook --config=/jupyter_notebook_config.py'])
 
