@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="134.46013mm"
+   height="39.85701mm"
+   viewBox="0 0 134.46013 39.85701"
+   version="1.1"
+   id="svg16105"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="GOL_Iteration.svg">
+  <defs
+     id="defs16099">
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path992"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend-9"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path992-2"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="203.14511"
+     inkscape:cy="63.24851"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1366"
+     inkscape:window-height="740"
+     inkscape:window-x="271"
+     inkscape:window-y="1200"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata16102">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-44.261013,-75.945534)">
+    <g
+       id="g16846"
+       transform="translate(1.5000009,-1.5000001)">
+      <image
+         width="30.1625"
+         height="30.1625"
+         preserveAspectRatio="none"
+         style="image-rendering:optimizeSpeed"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAAByCAYAAACP3YV9AAAABHNCSVQICAgIfAhkiAAAAWxJREFU
+eJzt3DEOwjAQAEEH8a/k6c7LoOIDCCnOMlPRmIBWV52cbc75Gtze4+ofwG88Px/2ff/qC87zdH6B
+8yYyQsgIISOEjBAyQsgIISOEjBAyQsgIISOEjBAyYrOPbDCRET/bRx7H8dX5OecS56/+//aRjDGE
+zBAyQsgIISOEjBAyQsgIISOEjBAyQsgIISPsIyNMZMQy+8ir7xfe/byJjBAyQsgIISOEjBAyQsgI
+ISOEjBAyQsgIISOEjLCPjDCREd7Xusj9TvtIxhhCZggZIWSEkBFCRggZIWSEkBFCRggZIWSEkBH2
+kREmMmKZfeTd94FXP99ERggZIWSEkBFCRggZIWSEkBFCRggZIWSEkBFCRthHRpjIiMz7Wv/9+SYy
+QsgIISOEjBAyQsgIISOEjBAyQsgIISOEjBAywj4ywkRGLHM/0nn7SIaQGUJGCBkhZISQEUJGCBkh
+ZISQEUJGCBkhZIR9ZISJjHgDvXat45KHCeIAAAAASUVORK5CYII=
+"
+         id="image16661"
+         x="44.261013"
+         y="78.945534" />
+      <image
+         width="30.1625"
+         height="30.1625"
+         preserveAspectRatio="none"
+         style="image-rendering:optimizeSpeed"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAAByCAYAAACP3YV9AAAABHNCSVQICAgIfAhkiAAAAW9JREFU
+eJzt3EFOw0AQRcEO4l720ccngxUXSCzZflSt2AxBeurVV3ittX6Gx/u6+g/gHN9/P2zb9tYvOI7j
+lPf7vr/1fq11yuc//b2LjBAyQsgIISOEjBAyQsgIISOEjBAyQsgIISOEjHjZIxtcZMRpe+Sne6I9
+0h7JCJkhZISQEUJGCBkhZISQEUJGCBkhZISQEUJG2CMjXGTEbfZIn2+PZITMEDJCyAghI4SMEDJC
+yAghI4SMEDJCyAghI+yRES4yIvP/Wp/+3h7JzAiZIWSEkBFCRggZIWSEkBFCRggZIWSEkBFCRtgj
+I1xkhD3yJt+P/PS9i4wQMkLICCEjhIwQMkLICCEjhIwQMkLICCEjhIywR0a4yIjb7JFX74FX//2+
+H8nMCJkhZISQEUJGCBkhZISQEUJGCBkhZISQEUJG2CMjXGREZo/87+9dZISQEUJGCBkhZISQEUJG
+CBkhZISQEUJGCBkhZIQ9MsJFRvwCvsat43sYVsAAAAAASUVORK5CYII=
+"
+         id="image16672"
+         x="94.909828"
+         y="78.945534" />
+      <image
+         width="30.1625"
+         height="30.1625"
+         preserveAspectRatio="none"
+         style="image-rendering:optimizeSpeed"
+         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAAByCAYAAACP3YV9AAAABHNCSVQICAgIfAhkiAAAAXFJREFU
+eJzt3UFuwkAQAMF1xL/sp69fBqd8gFhau1N14jJg1JrTCLHNOd+Dx/tZ/QBc4/X7Yt/3r97gPM8x
+xhjHcXw1P+e8ZP6vz//0eRsZIWSEkBFCRggZIWSEkBFCRggZIWSEkBFCRggZsblHNtjIiNvcI5/+
++avnbWSEkBFCRggZIWSEkBFCRggZIWSEkBFCRggZIWSEe2SEjYzI3CNXz6/+/jYyQsgIISOEjBAy
+QsgIISOEjBAyQsgIISOEjBAywj0ywkZGuEdG5m1khJARQkYIGSFkhJARQkYIGSFkhJARQkYIGSFk
+hHtkhI2MuOwe+d/nV/9/po2MEDJCyAghI4SMEDJCyAghI4SMEDJCyAghI4SMcI+MsJERt7lHrr7n
+Pf33nTYyQsgIISOEjBAyQsgIISOEjBAyQsgIISOEjBAywj0ywkZG3OYead49kiFkhpARQkYIGSFk
+hJARQkYIGSFkhJARQkYIGeEeGWEjIz68zq3j3Sox1QAAAABJRU5ErkJggg==
+"
+         id="image16683"
+         x="145.55864"
+         y="78.945534" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path16686"
+         d="M 77.236214,94.039996 H 90.843357"
+         style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend)" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path16686-0"
+         d="m 127.88502,94.039996 h 13.60714"
+         style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-9)" />
+      <text
+         id="text16807"
+         y="115.72262"
+         x="44.580719"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-size:5.64444447px;stroke-width:0.26458332"
+           y="115.72262"
+           x="44.580719"
+           id="tspan16805"
+           sodipodi:role="line">Iteration 0</tspan></text>
+      <text
+         id="text16807-6"
+         y="115.72262"
+         x="95.302567"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-size:5.64444447px;stroke-width:0.26458332"
+           y="115.72262"
+           x="95.302567"
+           id="tspan16805-8"
+           sodipodi:role="line">Iteration 1</tspan></text>
+      <text
+         id="text16807-9"
+         y="115.72262"
+         x="145.97343"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-size:5.64444447px;stroke-width:0.26458332"
+           y="115.72262"
+           x="145.97343"
+           id="tspan16805-2"
+           sodipodi:role="line">Iteration 2</tspan></text>
+    </g>
+  </g>
+</svg>
